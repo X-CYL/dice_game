@@ -21,8 +21,8 @@
 <body>
     <h1 class="text-center">DEATH DICE GAME</h1>
     <div class="row justify-content-center align-items-center">
-        <div class="col col-2">
-            <button class="btn btn-outline-secondary startGameButton" type="button">Start New Game</button>
+        <div class="col col-4">
+            <button class="btn btn-outline-secondary startGameButton col col-12" type="button">Start New Game</button>
         </div>
     </div>
     <div class = "container-fluid text-center">
@@ -61,15 +61,43 @@
                                 <button class="btn btn-success btnSaveP1" type="button">click to save now your current dice value</button>
                             </div>
                         </div>
-                        </div>
                     </div>
                 </section>
             </div>
                 <!--player 2 section-->
             <div class="playerCol col col-sm-5 bg-primary border border-5 border-primary" style="--bs-bg-opacity: .4;">
-                <section class="player2section">
-                    <h2>section 2</h2>
-                    <div class="container-fluid">
+                <section class="container-fluid player2section">
+                    <div class="row">
+                        <h2>PLAYER 2</h2>
+                        <div class="col">
+                            <form>
+                                <label class="player2lab" for="player2input">Player 2</label>
+                                <input type="text" id="player2input" placeholder="Enter your name">
+                            </form>
+                        </div>
+                        <div class="row align-items-center justify-content-center currentScoreP1Row">
+                            <div class="col col-6 currentScoreText1">
+                                <h4>Current score</h4>
+                            </div>
+                            <div class="col col-4 currentScoreZoneP1">
+                                <div id="currentScoreZoneP1 align-items-center justify-content-center">
+                                    <span></span>
+                                </div>
+                            </div>
+                        <div class="row align-items-center justify-content-center currentDiceValueRowP1">
+                            <div class="col col-6 currentDiceValueText1">
+                                <h4>Dice values</h4>
+                            </div>
+                            <div class="col col-4 currentDiceValueZoneP1">
+                                <div id="currentDiceValueZoneP1">
+                                    <span></span>
+                                </div>
+                            </div>
+                        <div class="row">
+                            <div class="col col-12 btnSaveP1Zone">
+                                <button class="btn btn-success btnSaveP1" type="button">click to save now your current dice value</button>
+                            </div>
+                        </div>
                     </div>
                 </section>
             </div>
