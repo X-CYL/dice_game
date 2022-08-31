@@ -59,6 +59,14 @@ span{
     color:red;
     font-weight: bold;
 }
+.diceZone{
+    margin-top: 43%;
+    font-size: 1.6em;
+}
+.dice{
+    margin-top: 49%;
+    height:30%;
+}
 body .container-fluid .col .currentScoreZoneP1{
     background-color: rgb(254, 254, 254);
     border: 2px solid green;

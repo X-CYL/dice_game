@@ -1,1 +1,0 @@
-body .container-fluid .playerCol
