@@ -13,9 +13,12 @@ let diceValuesPlayer2 = 0;
 let saveDiceValuesPlayer1 = document.getElementById('saveDiceValueP1');
 let saveDiceValuesPlayer2 = document.getElementById('saveDiceValueP2');
 let dice = document.getElementById('diceZoneTable');
-let valeurDe = 0
-let valueDice = 0;
+let valeurDe = 0;
+let addValueDice = 0;
 let valuDice1 = 0;
+let values = 0;
+let tempValue = 0;
+let lancerDe = document.getElementById('diceGameButton');
 
 let diceList = [
     './pictures/dice1.png',
@@ -41,6 +44,8 @@ function departButton(){
 }
 startButton.addEventListener('click',departButton);
 
+disabledPlayer();
+
 function resetAll(){
     player1CurrentScore= 0;
     document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
@@ -54,24 +59,33 @@ function resetAll(){
 }
 
 function rollDice(){
-    let output = document.querySelector("#diceZoneTable");
-    let display = s => output.innerHTML;                
-    diceList.forEach((name,i) => {
-    setTimeout(() => {
-    display(name);
-    document.getElementById('diceImg').setAttribute('src',name);
-    value = document.getElementById('diceValuesPlayer1').innerText = diceList.indexOf(name)+1;
-    }, Math.random(i) * 1500);
-  });
+    let counter = 0;
+    let i = setInterval (function(){
+    valeurDe = Math.floor(Math.random() * 6 + 1);
+    //document.getElementById('diceValuesPlayer1').innerText = valeurDe;
+    counter++;
+    if (counter === 7){
+    clearInterval(i);
+    console.log(valeurDe);
+    }
+},300);
 }
-rollingDice.addEventListener('click', rollDice);
+
+lancerDe =addEventListener('click', rollDice);
+console.log(valeurDe);
 
 
+// fonction qui desactive le player1 ou le player2 en fonction de celui qui est choisi... pas la bonne approche
 
-console.dir(player1CurrentScore);
-console.dir(player2CurrentScore);
-console.dir(diceValuesPlayer1);
-console.dir(diceValuesPlayer2);
-
-
-    
+function disabledPlayer(){
+    if (player1Name.value !== ""){
+        player2Name.setAttribute =('disabled','');
+    }else{
+        player2Name.removeAttribute =('disabled','');   //il faut revoir tout ça
+    }
+    if (player2Name.value !== ""){
+        player1Name.setAttribute =('disabled','');
+    }else{
+        player1Name.removeAttribute =('disabled','');
+    }
+}
