@@ -37,10 +37,10 @@
     <div class = "container-fluid text-center">
         <div class="row justify-content-center">
             <!--player 1 section-->
-            <div class = "playerCol col col-sm-5 me-3 bg-success border border-5 border-success" style="--bs-bg-opacity: .4;">
-                <section class="container-fluid player1Section" id="section1">
+            <div class = "playerCol col col-sm-5 me-3 bg-success border border-5 border-success" style="--bs-bg-opacity: .4;" id ="playerCol1">
+                <section class="container-fluid player1Section">
                     <div class="row">
-                        <h2>PLAYER 1</h2>
+                        <h2 id ="pl1Player">PLAYER 1</h2>
                         <div class="col">
                             <form>
                                 <label class="player1lab" for="player1input">Player 1</label>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="row align-items-center justify-content-center currentScoreP1Row">
                             <div class="col col-6 currentScoreText1">
-                                <h4>Current score</h4>
+                                <h4>Running score</h4>
                             </div>
                             <div class="col col-4 currentScoreZoneP1">
                                 <div id="currentScoreZoneP1">
@@ -58,28 +58,28 @@
                             </div>
                         <div class="row align-items-center justify-content-center currentDiceValueRowP1">
                             <div class="col col-6 currentDiceValueText1">
-                                <h4>Dice value</h4>
+                                <h4>Dice values</h4>
                             </div>
                             <div class="col col-4 currentDiceValueZoneP1">
                                 <div id="currentDiceValueZoneP1">
                                     <span id="diceValuesPlayer1"></span>
                                 </div>
                             </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col col-12 btnSaveP1Zone">
                                 <button class="btn btn-success btnSaveP1" 
                                         type="button"
-                                        id="saveDiceValueP1">click to save now your current dice value</button>
-                            </div>
+                                        id="saveDiceValueP1">click to save now your running dice value</button>
+                            </div>-->
                         </div>
                     </div>
                 </section>
             </div>
                 <!--player 2 section-->
-            <div class="playerCol col col-sm-5 bg-primary border border-5 border-primary" style="--bs-bg-opacity: .4;">
+            <div class="playerCol col col-sm-5 bg-primary border border-5 border-primary" style="--bs-bg-opacity: .4;" id ="playerCol2">
                 <section class="container-fluid player2section">
                     <div class="row">
-                        <h2>PLAYER 2</h2>
+                        <h2 id = "pl2Player">PLAYER 2</h2>
                         <div class="col">
                             <form>
                                 <label class="player2lab" for="player2input">Player 2</label>
@@ -87,8 +87,8 @@
                             </form>
                         </div>
                         <div class="row align-items-center justify-content-center currentScoreP1Row">
-                            <div class="col col-6 currentScoreText1">
-                                <h4>Current score</h4>
+                            <div class="col col-6currentScoreText1">
+                                <h4>Running score</h4>
                             </div>
                             <div class="col col-4 currentScoreZoneP1">
                                 <div id="currentScoreZoneP1 align-items-center justify-content-center">
@@ -97,19 +97,19 @@
                             </div>
                         <div class="row align-items-center justify-content-center currentDiceValueRowP1">
                             <div class="col col-6 currentDiceValueText1">
-                                <h4>Dice value</h4>
+                                <h4>Dice values</h4>
                             </div>
                             <div class="col col-4 currentDiceValueZoneP1">
                                 <div id="currentDiceValueZoneP1">
                                     <span id="diceValuesPlayer2"></span>
                                 </div>
                             </div>
-                        <div class="row">
+                        <!--<div class="row">
                             <div class="col col-12 btnSaveP1Zone">
                                 <button class="btn btn-success btnSaveP1" 
                                         type="button"
-                                        id="saveDiceValueP2">click to save now your current dice value</button>
-                            </div>
+                                        id="saveDiceValueP2">click to save now your running dice value</button>
+                            </div>-->
                         </div>
                     </div>
                 </section>
@@ -124,7 +124,14 @@
             </div>
         </div>
     </div>
+        
     <!--footer-->
+    <div class="row justify-content-center align-items-center">
+        <button class=" col col-4 btn btn-success btnSaveP3 " 
+                type="button"
+                id="saveDiceValueP1">click to save now your running dice value
+        </button>
+    </div>
     <footer class="container-fluid">
         <div class="card mb-2">
             <div class="row g-0">
