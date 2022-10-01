@@ -40,15 +40,15 @@
             <div class = "playerCol col col-sm-5 me-3 bg-success border border-5 border-success" style="--bs-bg-opacity: .4;" id ="playerCol1">
                 <section class="container-fluid player1Section">
                     <div class="row">
-                        <h2 id ="pl1Player">PLAYER 1</h2>
+                        <h2 id ="pl1Player" name="pl1Player">PLAYER 1</h2>
                         <div class="col">
                             <form>
-                                <label class="player1lab" for="player1input">Player 1</label>
+                                <label class="player1lab" for="player1input" id="p1">Player 1</label>
                                 <input type="text" id="player1input" placeholder="Enter your name">
                             </form>
                         </div>
                         <div class="row align-items-center justify-content-center currentScoreP1Row">
-                            <div class="col col-6 currentScoreText1">
+                            <div class="col col-6 currentScoreText1 cszP1">
                                 <h4>Running score</h4>
                             </div>
                             <div class="col col-4 currentScoreZoneP1">
@@ -79,19 +79,19 @@
             <div class="playerCol col col-sm-5 bg-primary border border-5 border-primary" style="--bs-bg-opacity: .4;" id ="playerCol2">
                 <section class="container-fluid player2section">
                     <div class="row">
-                        <h2 id = "pl2Player">PLAYER 2</h2>
+                        <h2 id = "pl2Player" name="pl2Player">PLAYER 2</h2>
                         <div class="col">
                             <form>
-                                <label class="player2lab" for="player2input">Player 2</label>
+                                <label class="player2lab" for="player2input" id="p2">Player 2</label>
                                 <input type="text" id="player2input" placeholder="Enter your name">
                             </form>
                         </div>
                         <div class="row align-items-center justify-content-center currentScoreP1Row">
-                            <div class="col col-6currentScoreText1">
+                            <div class="col col-6 currentScoreText2">
                                 <h4>Running score</h4>
                             </div>
-                            <div class="col col-4 currentScoreZoneP1">
-                                <div id="currentScoreZoneP1 align-items-center justify-content-center">
+                            <div class="col col-4 currentScoreZoneP1 cszP2">
+                                <div id="currentScoreZoneP2 align-items-center justify-content-center">
                                     <span id="CurrentScorePlayer2"></span>
                                 </div>
                             </div>
@@ -100,7 +100,7 @@
                                 <h4>Dice values</h4>
                             </div>
                             <div class="col col-4 currentDiceValueZoneP1">
-                                <div id="currentDiceValueZoneP1">
+                                <div id="currentDiceValueZoneP2">
                                     <span id="diceValuesPlayer2"></span>
                                 </div>
                             </div>

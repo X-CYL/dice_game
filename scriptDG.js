@@ -1,28 +1,31 @@
 
 //define the variables
-let startButton = document.getElementById('startGameButton');
-let player1Name = document.getElementById('player1input');
-let player2Name = document.getElementById('player2input');
-let player1Player = document.getElementById('pl1Player');
-let player2Player = document.getElementById('pl2Player');
-let rollingDice = document.getElementById('diceImg');
-let section1 = document.getElementById('player1section');
-let section2 = document.getElementById('player2section');
-let errorStartText = 'You must write the player\'s names'
-let player1CurrentScore = 0;
-let player2CurrentScore = 0;
-let diceValuesPlayer1 = 0;
-let diceValuesPlayer2 = 0;
+let startButton = document.getElementById('startGameButton'); //récupère le bouton de depart du jeu
+let player1Name = document.getElementById('player1input'); //récupère le nom du premier joueur
+let player2Name = document.getElementById('player2input'); //récupère le nom du deuxieme jpueur
+let player1Player = true;  
+let player2Player = false; 
+let rollingDice = document.getElementById('diceImg');     // la photo du dé
+let section1 = document.getElementById('player1section'); // récupère section du joueur 1
+let section2 = document.getElementById('player2section'); // récupère section du joueur 2
+let p1Name = document.getElementById('p1');
+let p2Name = document.getElementById('p2');
+let errorStartText = 'You must write the player\'s names'   // stocke le message d' erreur si les players ne sont pas renseignés
+let player1CurrentScore = 0;  //stocke la valeur totale du joueur 1
+let player2CurrentScore = 0;  //stocke la valeur totale du joueur 2
+let diceValuesPlayer1 = 0; // stocke la valeur temporaire du joueur 1
+let diceValuesPlayer2 = 0; // stocke la valeur temporaire du joueur 2
 let saveDiceValuesPlayer1 = document.getElementById('saveDiceValueP1');
-let saveDiceValuesPlayer2 = document.getElementById('saveDiceValueP2');
-let dice = document.getElementById('diceZoneTable');
-let valeurDe = 0;
-let valeurTemp = 0;
-let addValueDice = 0;
-let valuDice1 = 0;
-let values = 0;
-let tempValue = 0;
-let lancerDe = document.getElementById('diceGameButton');
+//let saveDiceValuesPlayer2 = document.getElementById('saveDiceValueP2');
+let dice = document.getElementById('diceZoneTable'); //stcke l emplacement de a zone de lancé de dé
+let valeurDe = 0; // valeur du dé après lancement
+let valeurTemp = 0;  //valeur totale temporaire du lancé de dé
+let addValueDice = 0; // stocke la valeur additionnée de la valeur totale joueur et valeur temporaire
+let valueDice1 = 0;  // non utilisée
+let values = 0; //non utilisée
+let tempValue = 0; //non utilisé
+let lancerDe = document.getElementById('diceGameButton'); //stocke le bouton de lancé de dé
+
 
 // create a list of links to dice pictures
 let diceList = [
@@ -46,9 +49,9 @@ let diceList = [
             //startButton.removeAttribute = ('disabled');
             startButton.style.border = "2px solid #ffffff";
             document.getElementById('resetGameButton').innerText = '';
-            player1Player.style.color = "#FF00FF"; //ajout
+            //player1Player.style.color = "#FF00FF"; //ajout
             resetAll();
-            playerSelect();
+            //playerSelect();
             lancerDe.addEventListener('click', rollDice);
         }
     }
@@ -66,7 +69,9 @@ startButton.addEventListener('click',departButton);
         diceValuesPlayer1 = 0
         document.getElementById('diceValuesPlayer1').innerText = diceValuesPlayer1;
         diceValuesPlayer2 = 0;
-        document.getElementById('diceValuesPlayer2').innerText = diceValuesPlayer2;
+        valeurTemp = 0;
+        p1Name.style.color = "rgb(255,83,150)";
+        document.getElementById('diceValuesPlayer2').innerText= diceValuesPlayer2;
         document.getElementById('diceImg').setAttribute('src', './pictures/dice6.png');
     }
 
@@ -95,46 +100,104 @@ function rollDice(){
         }
     counter++;
     if (counter === 7){
-        valeurTemp = valeurTemp + valeurDe;
-        console.log('dans la fonction la valeur de valeur Temp est de : ' + valeurTemp);
+        valeurTemp = valeurTemp + isOne;
+        console.log('dans la fonction la valeur de valeur Dé est de : ' + valeurDe);
+        console.log('la valeur de la variable valeurTemp en globale est de  : ' + valeurTemp);
         clearInterval(i);
-        document.getElementById('diceValuesPlayer1').innerHTML = valeurTemp;
-    }
-    
-},300);
+        //document.getElementById('diceValuesPlayer1').innerHTML = valeurTemp;
+        affectValue(); // affecte la valeur du dé avec une latence pour échapper au passage du 1 qui re initialise valeurTemp
+        }
+        if(isOne === 1){
+            if(player1Player === true){
+                valeurTemp = 0;
+                player1Player = false;
+                player2Player = true;
+                p2Name.style.color = "rgb(255,83,150)";
+                p1Name.style.color = "black";
+                document.getElementById('diceValuesPlayer1').value = 0;
+                document.getElementById('diceValuesPlayer2').innerHTML = valeurTemp;
+            }
+            else if(player2Player === true){
+                valeurTemp = 0;
+                player1Player = true;
+                player2Player = false;
+                p1Name.style.color = "rgb(255,83,150)";
+                p2Name.style.color = "black";
+                document.getElementById('diceValuesPlayer2').value = 0;
+                document.getElementById('diceValuesPlayer1').innerHTML = valeurTemp;
+            }
+            else {
+                "il y a un souci de fonction";
+            }
+        }
+        else{
+        valeurTemp = valeurTemp += isOne;
+        }
+    function affectValue(){
+        setTimeout(ifOne, 500)
+        }
+},400)
+}        
+let isOne = 0
+function ifOne(){ // récuprère la dernière valeur de valeurDe 
+    isOne = valeurDe;
+    console.log('la valeur de isOne est de :' + isOne);
 }
-//lancerDe.addEventListener('click', rollDice); colle dans start game pour autoriser lorsque les noms de players sont entrés.
 
 
-// to add dice value to cureent score , in construction !!!!
-function addDiceValueToCurrentScore(val1, val2){
-    totalDice = val1 + val2;
-}
 
-
-// fonction qui desactive le player1 ou le player2 en fonction de celui qui est choisi... pas la bonne approche
-
-/*function disabledPlayer(){
-    if (player1Name.value !== ""){
-        player2Name.setAttribute =('disabled','');
-    }else{
-        player2Name.removeAttribute =('disabled','');   //il faut revoir tout ça
-    }
-    if (player2Name.value !== ""){
-        player1Name.setAttribute =('disabled','');
-    }else{
-        player1Name.removeAttribute =('disabled','');
-    }
-}*/
-    function playerSelect(){
-    if(player1Player.style.color = "#FFOOFF"){  
-        player2Player.style.color = "#FFFFFF"; 
+/*function changePlayer(nD){
+    if(nD === 1){
+        if(player1Player === true){
+            valeurTemp = 0;
+            player1Player = false;
+            player2Player = true;
+            player2Player.style.color = "#FFOOFF";
+            player1Player.style.color = "black";
+            document.getElementById('diceValuesPlayer1').value = 0;
+            document.getElementById('diceValuesPlayer2').innerHTML = valeurTemp;
+        }
+        else if(player2Player === true){
+            valeurTemp = 0;
+            player1Player = true;
+            player2Player = false;
+            player1Player.style.color = "#FFOOFF";
+            player2Player.style.color = "black";
+            document.getElementById('diceValuesPlayer2').value = 0;
+            document.getElementById('diceValuesPlayer1').innerHTML = valeurTemp;
+        }
+        else {
+            'il y a un souci de fonction'
+        }
     }
     else{
-        player2Player.style.color = "#FF00FF"; 
-        player1Player.style.color = "#FFFFFF";
+        valeurTemp = valeurTemp += valeurDe;
+    }
+}*/
+
+// essayer le code suivant
+/*
+function changePlayer(nD){
+    if(nD === 1){
+        if(player1 === true){
+            mettre à 0 le compteur temp du player 1
+            player1 = false;
+            player2 = true;
+        }
+        else if(player2 === true){
+            mettre a 0 le compteur temp du player 2
+            player1 = true;
+            player2 = false;
+        }
+        else{
+            alert('il y a un soucis de code');
+        }
+    }
+    else{
+        continuer a compter
+        valeurTemp += valeurDe;
     }
 }
-console.log('la valeur de valeur temp est de : '+ valeurTemp);
-console.log('la valeur de valeur de est de : ' + valeurDe);
-
+*/
+console.log('la valeur du player 1 est : ' + player1Player);
+console.log('la valeur du player 2 est : ' + player2Player);
