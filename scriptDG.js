@@ -113,7 +113,7 @@ function rollDice(){
 },400)
 }        
 let isOne = 0
-function ifOne(){ // récuprère la dernière valeur de valeurDe 
+function ifOne(){ // récupère la dernière valeur de valeurDe 
     isOne = valeurDe;
     valeurTemp += valeurDe
     console.log('la valeur de isOne est de :' + isOne);
@@ -153,7 +153,7 @@ function ifOne(){ // récuprère la dernière valeur de valeurDe
     //console.log('la valeur de la variable valeurTemp en globale est de  : ' + valeurTemp);
     }
 }
-function addScore(){
+/*function addScore(){
     if(player1Player === true){
         player1CurrentScore += valeurTemp;
         document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
@@ -163,6 +163,43 @@ function addScore(){
         document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
     }
 }
+
+
 saveDiceValuesPlayer1.addEventListener('click',addScore);
 
+*/
+console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
+console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
 
+function addscore(){
+    if(player1Player === true){
+        player1CurrentScore += valeurTemp;
+        document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
+        console.log("la valeur de total P1 est de : " + player1CurrentScore);
+        diceValuesPlayer1 = 0;
+        document.getElementById('diceValuesPlayer1').innerText = 0;
+        valeurTemp = 0;
+        player1Player = false;
+        player2Player = true;
+        p2Name.style.color = "rgb(255,83,150)";
+        p1Name.style.color = "black";
+        cszP2.style.color = "rgb(255,83,150)";
+        cszP1.style.color = "black";
+                
+    }
+    else if(player2Player === true){
+        player2CurrentScore += valeurTemp;
+        console.log("la valeur de total P2 est de : " + player2CurrentScore);
+        document.getElementById('diceValuesPlayer2').innerText = player2CurrentScore;
+        diceValuesPlayer2 = 0;
+        document.getElementById('diceValuesPlayer2').innerText = 0;
+        valeurTemp = 0;
+        player1Player = true;
+        player2Player = false;
+        p1Name.style.color = "rgb(255,83,150)";
+        p2Name.style.color = "black";
+        cszP1.style.color = "rgb(255,83,150)";
+        cszP2.style.color = "black";
+            }
+}
+saveDiceValuesPlayer1.addEventListener('click',addscore)
