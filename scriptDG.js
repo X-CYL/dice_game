@@ -91,6 +91,46 @@ function rollDice() {
       document.getElementById("diceImg").setAttribute("src", diceList[5]);
     }
     counter++;
+    if (counter === 7){
+        console.log('dans la fonction la valeur de valeur Dé est de : ' + valeurDe);
+        clearInterval(i);
+        affectValue(); // affecte la valeur du dé avec une latence pour échapper au passage du 1 qui re initialise valeurTemp
+        }
+        
+    function affectValue(){
+        setTimeout(ifOne, 500)
+        }
+},400)
+}        
+let isOne = 0
+function ifOne(){ // récupère la dernière valeur de valeurDe 
+    isOne = valeurDe;
+    valeurTemp += valeurDe
+    console.log('la valeur de isOne est de :' + isOne);
+    if(isOne === 1){
+        if(player1Player === true){
+            valeurTemp = 0;
+            player1Player = false;
+            player2Player = true;
+            p2Name.style.color = "rgb(255,83,150)";
+            p1Name.style.color = "black";
+            cszP2.style.color = "rgb(255,83,150)";
+            cszP1.style.color = "black";
+            document.getElementById('diceValuesPlayer1').innerText = 0;
+        }
+        else if(player2Player === true){
+            valeurTemp = 0;
+            player1Player = true;
+            player2Player = false;
+            p1Name.style.color = "rgb(255,83,150)";
+            p2Name.style.color = "black";
+            cszP1.style.color = "rgb(255,83,150)";
+            cszP2.style.color = "black";
+            document.getElementById('diceValuesPlayer2').innerText = 0;
+        }
+        else {
+            "there a function failure";
+        }
     if (counter === 7) {
       console.log(
         "dans la fonction la valeur de valeur Dé est de : " + valeurDe
@@ -132,6 +172,17 @@ function ifOne() {
     } else {
       ("there's a failure function");
     }
+
+    function affectValue() {
+      setTimeout(ifOne, 500);
+    }
+  }, 400);
+}
+/*function addScore(){
+    if(player1Player === true){
+        player1CurrentScore += valeurTemp;
+        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
+    }
   } else {
     if (player1Player === true) {
       document.getElementById("diceValuesPlayer1").innerHTML = valeurTemp;
@@ -155,3 +206,43 @@ function addScore() {
     valeurTemp = 0;
   }
 }
+
+
+saveDiceValuesPlayer1.addEventListener('click',addScore);
+
+*/
+console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
+console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
+
+function addscore(){
+    if(player1Player === true){
+        player1CurrentScore += valeurTemp;
+        document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
+        console.log("la valeur de total P1 est de : " + player1CurrentScore);
+        diceValuesPlayer1 = 0;
+        document.getElementById('diceValuesPlayer1').innerText = 0;
+        valeurTemp = 0;
+        player1Player = false;
+        player2Player = true;
+        p2Name.style.color = "rgb(255,83,150)";
+        p1Name.style.color = "black";
+        cszP2.style.color = "rgb(255,83,150)";
+        cszP1.style.color = "black";
+                
+    }
+    else if(player2Player === true){
+        player2CurrentScore += valeurTemp;
+        console.log("la valeur de total P2 est de : " + player2CurrentScore);
+        document.getElementById('diceValuesPlayer2').innerText = player2CurrentScore;
+        diceValuesPlayer2 = 0;
+        document.getElementById('diceValuesPlayer2').innerText = 0;
+        valeurTemp = 0;
+        player1Player = true;
+        player2Player = false;
+        p1Name.style.color = "rgb(255,83,150)";
+        p2Name.style.color = "black";
+        cszP1.style.color = "rgb(255,83,150)";
+        cszP2.style.color = "black";
+            }
+}
+saveDiceValuesPlayer1.addEventListener('click',addscore)
