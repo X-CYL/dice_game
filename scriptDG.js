@@ -174,8 +174,9 @@ console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
 function addscore(){
     if(player1Player === true){
         player1CurrentScore += valeurTemp;
-        document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
+        //document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
         console.log("la valeur de total P1 est de : " + player1CurrentScore);
+        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
         diceValuesPlayer1 = 0;
         document.getElementById('diceValuesPlayer1').innerText = 0;
         valeurTemp = 0;
@@ -190,7 +191,7 @@ function addscore(){
     else if(player2Player === true){
         player2CurrentScore += valeurTemp;
         console.log("la valeur de total P2 est de : " + player2CurrentScore);
-        document.getElementById('diceValuesPlayer2').innerText = player2CurrentScore;
+        document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
         diceValuesPlayer2 = 0;
         document.getElementById('diceValuesPlayer2').innerText = 0;
         valeurTemp = 0;
