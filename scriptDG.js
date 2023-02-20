@@ -24,7 +24,9 @@ let addValueDice = 0; // stocke la valeur additionnée de la valeur totale joueu
 let cszP1 = document.getElementById('pl1Player');
 let cszP2 = document.getElementById('pl2Player');
 let tempValue = 0; //non utilisé
+let maxScore = 20;
 let lancerDe = document.getElementById('diceGameButton'); //stocke le bouton de lancé de dé
+let endingModale = document.getElementById("exempleModal");
 console.log('la valeur de la variable valeurTemp en TETE est de  : ' + valeurTemp);
 
 
@@ -78,6 +80,7 @@ startButton.addEventListener('click',departButton);
     }
 
 // To rolling the dice when the game's playing
+
 function rollDice(){
     let counter = 0;
     let i = setInterval (function(){
@@ -150,31 +153,19 @@ function ifOne(){ // récupère la dernière valeur de valeurDe
             document.getElementById('diceValuesPlayer2').innerHTML = valeurTemp;
         }
     valeurTemp;
-    //console.log('la valeur de la variable valeurTemp en globale est de  : ' + valeurTemp);
-    }
-}
-/*function addScore(){
-    if(player1Player === true){
-        player1CurrentScore += valeurTemp;
-        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
-    }
-    else if(player2Player === true){
-        player2CurrentScore += valeurTemp;
-        document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
     }
 }
 
-
-saveDiceValuesPlayer1.addEventListener('click',addScore);
-
-*/
 console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
 console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
 
 function addscore(){
     if(player1Player === true){
         player1CurrentScore += valeurTemp;
-        //document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
+        if(player1CurrentScore > maxScore){
+         showEndingModale();
+          lancerDe === false
+        }
         console.log("la valeur de total P1 est de : " + player1CurrentScore);
         document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
         diceValuesPlayer1 = 0;
@@ -185,11 +176,14 @@ function addscore(){
         p2Name.style.color = "rgb(255,83,150)";
         p1Name.style.color = "black";
         cszP2.style.color = "rgb(255,83,150)";
-        cszP1.style.color = "black";
-                
+        cszP1.style.color = "black";         
     }
     else if(player2Player === true){
         player2CurrentScore += valeurTemp;
+        if (player2CurrentScore > maxScore){
+            showEndingModale();
+            lancerDe === false
+        }
         console.log("la valeur de total P2 est de : " + player2CurrentScore);
         document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
         diceValuesPlayer2 = 0;
@@ -204,3 +198,8 @@ function addscore(){
             }
 }
 saveDiceValuesPlayer1.addEventListener('click',addscore)
+
+
+ function showEndingModale(){
+    endingModale.show()
+ }
