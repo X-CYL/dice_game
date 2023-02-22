@@ -1,5 +1,6 @@
 
 //define the variables
+
 let startButton = document.getElementById('startGameButton'); //récupère le bouton de depart du jeu
 let player1Name = document.getElementById('player1input'); //récupère le nom du premier joueur
 let player2Name = document.getElementById('player2input'); //récupère le nom du deuxieme jpueur
@@ -26,7 +27,12 @@ let cszP2 = document.getElementById('pl2Player');
 let tempValue = 0; //non utilisé
 let maxScore = 10;
 let lancerDe = document.getElementById('diceGameButton'); //stocke le bouton de lancé de dé
-let endingModale = document.getElementById("exempleModal");
+
+let winModale = new bootstrap.Modal(document.getElementById("winnerModal"),{
+    keyboard: true
+});
+quitButton = document.getElementById('quitGame');
+resetButton = document.getElementById('restartGame');
 //console.log('la valeur de la variable valeurTemp en TETE est de  : ' + valeurTemp);
 
 
@@ -156,8 +162,8 @@ function ifOne(){ // récupère la dernière valeur de valeurDe
     }
 }
 
-//console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
-//console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
+console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
+console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
 
 
 /* -----------------------------c'est a partir d'ici que je veux afficher ma modale----------------------------------------*/
@@ -167,7 +173,7 @@ function addscore(){
         if(player1CurrentScore >= maxScore){ // la valeur de la variable maxScore est réglée à 10 pour les tests de jeu
             endGame();
         }
-        else
+        else{
         player1CurrentScore += valeurTemp;
         console.log("la valeur de total P1 est de : " + player1CurrentScore);
         document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
@@ -180,12 +186,13 @@ function addscore(){
         p1Name.style.color = "black";
         cszP2.style.color = "rgb(255,83,150)";
         cszP1.style.color = "black";         
-    }
+        }
+}
     else if(player2Player === true){
         if(player2CurrentScore >= maxScore){ // la valeur de la variable maxScore est réglée à 10 pour les tests de jeu
             endGame();
         }
-        else
+        else{
         player2CurrentScore += valeurTemp;
         console.log("la valeur de total P2 est de : " + player2CurrentScore);
         document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
@@ -198,12 +205,19 @@ function addscore(){
         p2Name.style.color = "black";
         cszP1.style.color = "rgb(255,83,150)";
         cszP2.style.color = "black";
-            }
+        }
+        
+}
 }
 
 saveDiceValuesPlayer1.addEventListener('click',addscore);
 
-function endGame(){
-    $('#exampleModal').modal(show)
-}
 
+function endGame(){
+    winModale.show()
+}
+function refreshPage(){
+    window.location.reload();
+} 
+resetButton.addEventListener('click',resetAll)
+quitButton.addEventListener('click',refreshPage)
