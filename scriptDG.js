@@ -1,18 +1,18 @@
 //define the variables
-let startButton = document.getElementById("startGameButton"); //récupère le bouton de depart du jeu
-let player1Name = document.getElementById("player1input"); //récupère le nom du premier joueur
-let player2Name = document.getElementById("player2input"); //récupère le nom du deuxieme jpueur
-let player1Player = true;
-let player2Player = false;
-let rollingDice = document.getElementById("diceImg"); // la photo du dé
-let section1 = document.getElementById("player1section"); // récupère section du joueur 1
-let section2 = document.getElementById("player2section"); // récupère section du joueur 2
-let p1Name = document.getElementById("p1");
-let p2Name = document.getElementById("p2");
-let errorStartText =
-  "Vous devez entrer des noms de joueur avant de pouvoir démarrer le jeu"; // stocke le message d' erreur si les players ne sont pas renseignés
-let player1CurrentScore = 0; //stocke la valeur totale du joueur 1
-let player2CurrentScore = 0; //stocke la valeur totale du joueur 2
+
+let startButton = document.getElementById('startGameButton'); //récupère le bouton de depart du jeu
+let player1Name = document.getElementById('player1input'); //récupère le nom du premier joueur
+let player2Name = document.getElementById('player2input'); //récupère le nom du deuxieme jpueur
+let player1Player = true;  
+let player2Player = false; 
+let rollingDice = document.getElementById('diceImg');     // la photo du dé
+let section1 = document.getElementById('player1section'); // récupère section du joueur 1
+let section2 = document.getElementById('player2section'); // récupère section du joueur 2
+let p1Name = document.getElementById('p1');
+let p2Name = document.getElementById('p2');
+let errorStartText = 'You must write the player\'s names'   // stocke le message d' erreur si les players ne sont pas renseignés
+let player1CurrentScore = 0;  //stocke la valeur totale du joueur 1
+let player2CurrentScore = 0;  //stocke la valeur totale du joueur 2
 let diceValuesPlayer1 = 0; // stocke la valeur temporaire du joueur 1
 let diceValuesPlayer2 = 0; // stocke la valeur temporaire du joueur 2
 let saveDiceValuesPlayer1 = document.getElementById("saveDiceValueP1");
@@ -23,8 +23,16 @@ let valeurTemp = 0; //valeur totale temporaire du lancé de dé
 let cszP1 = document.getElementById("pl1Player");
 let cszP2 = document.getElementById("pl2Player");
 let tempValue = 0; //non utilisé
-let lancerDe = document.getElementById("diceGameButton"); //stocke le bouton de lancé de dé
+let maxScore = 10;
+let lancerDe = document.getElementById('diceGameButton'); //stocke le bouton de lancé de dé
+
+let winModale = new bootstrap.Modal(document.getElementById("winnerModal"),{
+    keyboard: true
+});
+quitButton = document.getElementById('quitGame');
+resetButton = document.getElementById('restartGame');
 //console.log('la valeur de la variable valeurTemp en TETE est de  : ' + valeurTemp);
+
 
 // create a list of links to dice pictures
 let diceList = [
@@ -37,45 +45,48 @@ let diceList = [
 ];
 
 // init new game
-function departButton() {
-  if (player1Name.value === "" || player2Name.value === "") {
-    startButton.style.border = "2px solid #f44646";
-    document.getElementById("resetGameButton").innerText = errorStartText;
-    player1Name.focus();
-  } else {
-    startButton.style.border = "2px solid #ffffff";
-    document.getElementById("resetGameButton").innerText = "";
-    resetAll();
-    lancerDe.addEventListener("click", rollDice);
-    saveDiceValuesPlayer1.addEventListener("click", addScore);
-  }
-}
-startButton.addEventListener("click", departButton);
+    function departButton(){
+        if (player1Name.value === "" || player2Name.value === ""){
+            //startButton.setAttribute =('disabled');
+            startButton.style.border = "2px solid #f44646";
+            document.getElementById('resetGameButton').innerText = errorStartText;
+            player1Name.focus();
+        }
+        else {
+            //startButton.removeAttribute = ('disabled');
+            startButton.style.border = "2px solid #ffffff";
+            document.getElementById('resetGameButton').innerText = '';
+            //player1Player.style.color = "#FF00FF"; //ajout
+            resetAll();
+            //playerSelect();
+            lancerDe.addEventListener('click', rollDice);
+        }
+    }
+startButton.addEventListener('click',departButton);
+
 
 // reset all inputs and scores when init new game
-function resetAll() {
-  player1CurrentScore = 0;
-  document.getElementById("CurrentScorePlayer1").innerText =
-    player1CurrentScore;
-  player2CurrentScore = 0;
-  document.getElementById("CurrentScorePlayer2").innerText =
-    player2CurrentScore;
-  diceValuesPlayer1 = 0;
-  document.getElementById("diceValuesPlayer1").innerHTML = diceValuesPlayer1;
-  diceValuesPlayer2 = 0;
-  document.getElementById("diceValuesPlayer2").innerText = diceValuesPlayer2;
-  valeurTemp = 0;
-  p1Name.style.color = "rgb(255,83,150)";
-  cszP1.style.color = "rgb(255,83,150)";
-  document
-    .getElementById("diceImg")
-    .setAttribute("src", "./pictures/dice6.png");
-}
+    function resetAll(){
+        player1CurrentScore= 0;
+        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
+        player2CurrentScore = 0;
+        document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
+        diceValuesPlayer1 = 0
+        document.getElementById('diceValuesPlayer1').innerHTML = diceValuesPlayer1;
+        diceValuesPlayer2 = 0;
+        document.getElementById('diceValuesPlayer2').innerText= diceValuesPlayer2;
+        valeurTemp = 0;
+        p1Name.style.color = "rgb(255,83,150)";
+        cszP1.style.color = "rgb(255,83,150)";
+        document.getElementById('diceImg').setAttribute('src', './pictures/dice6.png');
+        player1Name.focus();
+    }
 
 // To rolling the dice when the game's playing
-function rollDice() {
-  let counter = 0;
-  let i = setInterval(function () {
+
+function rollDice(){
+    let counter = 0;
+    let i = setInterval (function(){
     valeurDe = Math.floor(Math.random() * 6 + 1);
     if (valeurDe === 1) {
       document.getElementById("diceImg").setAttribute("src", diceList[0]);
@@ -103,122 +114,56 @@ function rollDice() {
 },400)
 }        
 let isOne = 0
+let temp = 0
 function ifOne(){ // récupère la dernière valeur de valeurDe 
     isOne = valeurDe;
-    valeurTemp += valeurDe
-    console.log('la valeur de isOne est de :' + isOne);
-    if(isOne === 1){
-        if(player1Player === true){
-            valeurTemp = 0;
-            player1Player = false;
-            player2Player = true;
-            p2Name.style.color = "rgb(255,83,150)";
-            p1Name.style.color = "black";
-            cszP2.style.color = "rgb(255,83,150)";
-            cszP1.style.color = "black";
-            document.getElementById('diceValuesPlayer1').innerText = 0;
-        }
-        else if(player2Player === true){
-            valeurTemp = 0;
-            player1Player = true;
-            player2Player = false;
-            p1Name.style.color = "rgb(255,83,150)";
-            p2Name.style.color = "black";
-            cszP1.style.color = "rgb(255,83,150)";
-            cszP2.style.color = "black";
-            document.getElementById('diceValuesPlayer2').innerText = 0;
-        }
-        else {
-            "there a function failure";
-        }
-    if (counter === 7) {
-      console.log(
-        "dans la fonction la valeur de valeur Dé est de : " + valeurDe
-      );
-      clearInterval(i);
-      affectValue(); // affecte la valeur du dé avec une latence pour échapper au passage du 1 qui re initialise valeurTemp
+    temp = valeurTemp += valeurDe
+    console.log('la valeur de temp est de  :' + temp)
+        if(isOne === 1){
+            if(player1Player === true){
+                valeurTemp = 0;
+                player1Player = false;
+                player2Player = true;
+                p2Name.style.color = "rgb(255,83,150)";
+                p1Name.style.color = "black";
+                cszP2.style.color = "rgb(255,83,150)";
+                cszP1.style.color = "black";
+                document.getElementById('diceValuesPlayer1').innerText = 0;
+                }
+            else if(player2Player === true){
+                valeurTemp = 0;
+                player1Player = true;
+                player2Player = false;
+                p1Name.style.color = "rgb(255,83,150)";
+                p2Name.style.color = "black";
+                cszP1.style.color = "rgb(255,83,150)";
+                cszP2.style.color = "black";
+                document.getElementById('diceValuesPlayer2').innerText = 0;
+                }
+            } else{
+            if(player1Player === true){
+                document.getElementById('diceValuesPlayer1').innerHTML = temp;
+            }
+            else if(player2Player === true){
+                document.getElementById('diceValuesPlayer2').innerHTML = temp;
+            }
+        valeurDe;
+            }
     }
+    
 
-    function affectValue() {
-      setTimeout(ifOne, 500);
-    }
-  }, 400);
-}
-let isOne = 0;
-function ifOne() {
-  // récuprère la dernière valeur de valeurDe
-  isOne = valeurDe;
-  valeurTemp += valeurDe;
-  console.log("la valeur de isOne est de :" + isOne);
-  if (isOne === 1) {
-    if (player1Player === true) {
-      valeurTemp = 0;
-      player1Player = false;
-      player2Player = true;
-      p2Name.style.color = "rgb(255,83,150)";
-      p1Name.style.color = "black";
-      cszP2.style.color = "rgb(255,83,150)";
-      cszP1.style.color = "black";
-      document.getElementById("diceValuesPlayer1").innerText = 0;git 
-    } else if (player2Player === true) {
-      valeurTemp = 0;
-      player1Player = true;
-      player2Player = false;
-      p1Name.style.color = "rgb(255,83,150)";
-      p2Name.style.color = "black";
-      cszP1.style.color = "rgb(255,83,150)";
-      cszP2.style.color = "black";
-      document.getElementById("diceValuesPlayer2").innerText = 0;
-    } else {
-      ("there's a failure function");
-    }
-
-    function affectValue() {
-      setTimeout(ifOne, 500);
-    }
-  }, 400);
-}
-/*function addScore(){
-    if(player1Player === true){
-        player1CurrentScore += valeurTemp;
-        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
-    }
-  } else {
-    if (player1Player === true) {
-      document.getElementById("diceValuesPlayer1").innerHTML = valeurTemp;
-    } else if (player2Player === true) {
-      document.getElementById("diceValuesPlayer2").innerHTML = valeurTemp;
-    }
-    valeurTemp;
-    //console.log('la valeur de la variable valeurTemp en globale est de  : ' + valeurTemp);
-  }
-}
-function addScore() {
-  if (player1Player === true) {
-    player1CurrentScore += valeurTemp;
-    document.getElementById("CurrentScorePlayer1").innerText =
-      player1CurrentScore;
-    valeurTemp = 0;
-  } else if (player2Player === true) {
-    player2CurrentScore += valeurTemp;
-    document.getElementById("CurrentScorePlayer2").innerText =
-      player2CurrentScore;
-    valeurTemp = 0;
-  }
-}
+console.log('la valeur de valeurTemp est de : '+ valeurTemp)
 
 
-saveDiceValuesPlayer1.addEventListener('click',addScore);
 
-*/
-console.log('la valeur de dicevaluesP1 est de :'+ diceValuesPlayer1);
-console.log('la valeur de dicevaluesP2 est de :'+ diceValuesPlayer2);
+/* -----------------------------c'est a partir d'ici que je veux afficher ma modale----------------------------------------*/
+
 
 function addscore(){
     if(player1Player === true){
         player1CurrentScore += valeurTemp;
-        document.getElementById('diceValuesPlayer1').innerText = player1CurrentScore;
         console.log("la valeur de total P1 est de : " + player1CurrentScore);
+        document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
         diceValuesPlayer1 = 0;
         document.getElementById('diceValuesPlayer1').innerText = 0;
         valeurTemp = 0;
@@ -227,13 +172,12 @@ function addscore(){
         p2Name.style.color = "rgb(255,83,150)";
         p1Name.style.color = "black";
         cszP2.style.color = "rgb(255,83,150)";
-        cszP1.style.color = "black";
-                
-    }
-    else if(player2Player === true){
-        player2CurrentScore += valeurTemp;
+        cszP1.style.color = "black";       
+        }
+        else{
+        player2CurrentScore  += valeurTemp;
         console.log("la valeur de total P2 est de : " + player2CurrentScore);
-        document.getElementById('diceValuesPlayer2').innerText = player2CurrentScore;
+        document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
         diceValuesPlayer2 = 0;
         document.getElementById('diceValuesPlayer2').innerText = 0;
         valeurTemp = 0;
@@ -243,6 +187,21 @@ function addscore(){
         p2Name.style.color = "black";
         cszP1.style.color = "rgb(255,83,150)";
         cszP2.style.color = "black";
-            }
+        }     
 }
-saveDiceValuesPlayer1.addEventListener('click',addscore)
+
+
+saveDiceValuesPlayer1.addEventListener('click',addscore);
+
+
+function endGame(){
+    winModale.show()
+}
+function refreshPage(){
+    window.location.reload();
+} 
+
+resetButton.addEventListener('click',resetAll);
+quitButton.addEventListener('click',refreshPage);
+
+
