@@ -15,8 +15,8 @@ addition();
 console.log(c);*/
 
 let score = 1;
-let jimmy = true;
-let sabine = false;
+let jimmy = false;
+let sabine = true;
     if(score === 1){
         if (jimmy === true){
         sabine = true;
@@ -34,3 +34,12 @@ let sabine = false;
 console.log('la valeur de jimmy est de : ' + jimmy);
 
 console.log('la valeur de sabine est de : ' + sabine);
+
+let a = 10;
+let b = 5;
+let c = 0;
+
+function addition(){
+    c = a + b
+};
+

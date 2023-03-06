@@ -78,8 +78,12 @@ startButton.addEventListener('click',departButton);
         valeurTemp = 0;
         p1Name.style.color = "rgb(255,83,150)";
         cszP1.style.color = "rgb(255,83,150)";
-        document.getElementById('diceImg').setAttribute('src', './pictures/dice6.png');
+        p2Name.style.color = "black";
+        cszP2.style.color = "black";
         player1Name.focus();
+        player1Player = true;
+        document.getElementById('diceImg').setAttribute('src', './pictures/dice6.png');
+        
     }
 
 // To rolling the dice when the game's playing
@@ -103,7 +107,6 @@ function rollDice(){
     }
     counter++;
     if (counter === 7){
-        console.log('dans la fonction la valeur de valeur Dé est de : ' + valeurDe);
         clearInterval(i);
         affectValue(); // affecte la valeur du dé avec une latence pour échapper au passage du 1 qui re initialise valeurTemp
         }
@@ -117,8 +120,9 @@ let isOne = 0
 let temp = 0
 function ifOne(){ // récupère la dernière valeur de valeurDe 
     isOne = valeurDe;
-    temp = valeurTemp += valeurDe
-    console.log('la valeur de temp est de  :' + temp)
+    valeurTemp += valeurDe
+    console.log('la valeur de temp est de  :' + valeurTemp)
+    ctrlMaxValue();
         if(isOne === 1){
             if(player1Player === true){
                 valeurTemp = 0;
@@ -140,12 +144,13 @@ function ifOne(){ // récupère la dernière valeur de valeurDe
                 cszP2.style.color = "black";
                 document.getElementById('diceValuesPlayer2').innerText = 0;
                 }
-            } else{
+            } 
+            else{
             if(player1Player === true){
-                document.getElementById('diceValuesPlayer1').innerHTML = temp;
+                document.getElementById('diceValuesPlayer1').innerHTML = valeurTemp;
             }
             else if(player2Player === true){
-                document.getElementById('diceValuesPlayer2').innerHTML = temp;
+                document.getElementById('diceValuesPlayer2').innerHTML = valeurTemp;
             }
         valeurDe;
             }
@@ -190,8 +195,8 @@ function addscore(){
         }     
 }
 
-
 saveDiceValuesPlayer1.addEventListener('click',addscore);
+
 
 
 function endGame(){
@@ -204,4 +209,14 @@ function refreshPage(){
 resetButton.addEventListener('click',resetAll);
 quitButton.addEventListener('click',refreshPage);
 
-
+function ctrlMaxValue(){
+    if(player1Player === true){
+        if (player1CurrentScore + valeurTemp >= maxScore ){
+            endGame();
+        } 
+    } else if(player2Player === true){
+        if (player2CurrentScore + valeurTemp >= maxScore){
+            endGame();
+        } 
+    }
+}
