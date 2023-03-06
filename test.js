@@ -35,11 +35,4 @@ console.log('la valeur de jimmy est de : ' + jimmy);
 
 console.log('la valeur de sabine est de : ' + sabine);
 
-let a = 10;
-let b = 5;
-let c = 0;
-
-function addition(){
-    c = a + b
-};
 

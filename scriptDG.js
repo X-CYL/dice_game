@@ -19,10 +19,8 @@ let saveDiceValuesPlayer1 = document.getElementById("saveDiceValueP1");
 let dice = document.getElementById("diceZoneTable"); //stocke l emplacement de la zone de lancé de dé
 let valeurDe = 0; // valeur du dé après lancement
 let valeurTemp = 0; //valeur totale temporaire du lancé de dé
-//let addValueDice = 0; // stocke la valeur additionnée de la valeur totale joueur et valeur temporaire
 let cszP1 = document.getElementById("pl1Player");
 let cszP2 = document.getElementById("pl2Player");
-let tempValue = 0; //non utilisé
 let maxScore = 10;
 let lancerDe = document.getElementById('diceGameButton'); //stocke le bouton de lancé de dé
 
@@ -31,7 +29,6 @@ let winModale = new bootstrap.Modal(document.getElementById("winnerModal"),{
 });
 quitButton = document.getElementById('quitGame');
 resetButton = document.getElementById('restartGame');
-//console.log('la valeur de la variable valeurTemp en TETE est de  : ' + valeurTemp);
 
 
 // create a list of links to dice pictures
@@ -65,7 +62,7 @@ let diceList = [
 startButton.addEventListener('click',departButton);
 
 
-// reset all inputs and scores when init new game
+// reset all inputs and scores when init new game or start a new game
     function resetAll(){
         player1CurrentScore= 0;
         document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
@@ -121,7 +118,6 @@ let temp = 0
 function ifOne(){ // récupère la dernière valeur de valeurDe 
     isOne = valeurDe;
     valeurTemp += valeurDe
-    console.log('la valeur de temp est de  :' + valeurTemp)
     ctrlMaxValue();
         if(isOne === 1){
             if(player1Player === true){
@@ -155,19 +151,11 @@ function ifOne(){ // récupère la dernière valeur de valeurDe
         valeurDe;
             }
     }
-    
-
-console.log('la valeur de valeurTemp est de : '+ valeurTemp)
-
-
-
-/* -----------------------------c'est a partir d'ici que je veux afficher ma modale----------------------------------------*/
 
 
 function addscore(){
     if(player1Player === true){
         player1CurrentScore += valeurTemp;
-        console.log("la valeur de total P1 est de : " + player1CurrentScore);
         document.getElementById('CurrentScorePlayer1').innerText = player1CurrentScore;
         diceValuesPlayer1 = 0;
         document.getElementById('diceValuesPlayer1').innerText = 0;
@@ -181,7 +169,6 @@ function addscore(){
         }
         else{
         player2CurrentScore  += valeurTemp;
-        console.log("la valeur de total P2 est de : " + player2CurrentScore);
         document.getElementById('CurrentScorePlayer2').innerText = player2CurrentScore;
         diceValuesPlayer2 = 0;
         document.getElementById('diceValuesPlayer2').innerText = 0;
