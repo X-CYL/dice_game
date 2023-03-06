@@ -44,18 +44,14 @@ let diceList = [
 // init new game
     function departButton(){
         if (player1Name.value === "" || player2Name.value === ""){
-            //startButton.setAttribute =('disabled');
             startButton.style.border = "2px solid #f44646";
             document.getElementById('resetGameButton').innerText = errorStartText;
             player1Name.focus();
         }
         else {
-            //startButton.removeAttribute = ('disabled');
             startButton.style.border = "2px solid #ffffff";
             document.getElementById('resetGameButton').innerText = '';
-            //player1Player.style.color = "#FF00FF"; //ajout
             resetAll();
-            //playerSelect();
             lancerDe.addEventListener('click', rollDice);
         }
     }
@@ -183,8 +179,6 @@ function addscore(){
 }
 
 saveDiceValuesPlayer1.addEventListener('click',addscore);
-
-
 
 function endGame(){
     winModale.show()
