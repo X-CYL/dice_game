@@ -108,7 +108,10 @@ function rollDice(){
         setTimeout(ifOne, 500)
         }
 },400)
-}        
+}  
+
+lancerDe.addEventListener('click',rollDice);
+
 let isOne = 0
 let temp = 0
 function ifOne(){ // récupère la dernière valeur de valeurDe 
