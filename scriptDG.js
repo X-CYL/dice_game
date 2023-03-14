@@ -15,7 +15,7 @@ let player1CurrentScore = 0;  //stocke la valeur totale du joueur 1
 let player2CurrentScore = 0;  //stocke la valeur totale du joueur 2
 let diceValuesPlayer1 = 0; // stocke la valeur temporaire du joueur 1
 let diceValuesPlayer2 = 0; // stocke la valeur temporaire du joueur 2
-let saveDiceValuesPlayer1 = document.getElementById("saveDiceValueP1");
+let savingScore = document.getElementById("saveDiceValue");
 let dice = document.getElementById("diceZoneTable"); //stocke l emplacement de la zone de lancé de dé
 let valeurDe = 0; // valeur du dé après lancement
 let valeurTemp = 0; //valeur totale temporaire du lancé de dé
@@ -178,7 +178,7 @@ function addscore(){
         }     
 }
 
-saveDiceValuesPlayer1.addEventListener('click',addscore);
+savingScore.addEventListener('click',addscore);
 
 function endGame(){
     winModale.show()

@@ -1,6 +1,7 @@
 
 body{
-    background-image: url('./pictures/diceBGop1.jpg');
+    background-image: url('./textures/acajou1.jpg');
+    font-family: './fonts/Lato/Lato-Regular.ttf';
 }
 h1{
     margin-top: 2%;
@@ -29,6 +30,12 @@ body .container-fluid .playerCol{
     border:6px solid rgb(7, 7, 7);
     border-radius: 50%;
     margin-top: -25%;
+}
+.bg-image1{
+    background-image: url('./textures/gold_texture1.jpg');
+}
+.bg-image2{
+    background-image: url('./textures/silver1.jpg');
 }
 body .container-fluid .player1class .player1score{
     display: block;
