@@ -32,7 +32,7 @@
         </div>
         <div class="row justify-content-center align-items-center">
             <div Class=" col col-6">
-                <span class="btn resetGameButton col col-12" 
+                <span class="btn resetGameButton fs-2 col col-12" 
                       id="resetGameButton"></span>
             </div>
         </div>
@@ -53,7 +53,7 @@
                             <div class="col col-6 currentScoreText1" id ='cszP1'>
                                 <h4>Score sauvegardé</h4>
                         </div>
-                        <div class="col col-4 currentScoreZoneP1" id="pl1Player">
+                        <div class="col col-4 currentScoreZoneP1">
                             <div id="currentScoreZoneP1 align-items-center justify-content-center">
                                 <span id="CurrentScorePlayer1"></span>
                             </div>
@@ -84,10 +84,10 @@
                             </form>
                         </div>
                         <div class="row align-items-center justify-content-center currentScoreP1Row">
-                            <div class="col col-6 currentScoreText2" >
+                            <div class="col col-6 currentScoreText2" id ='cszP2'>
                                 <h4>Score sauvegardé</h4>
                             </div>
-                            <div class="col col-4 currentScoreZoneP1" id="pl2Player">
+                            <div class="col col-4 currentScoreZoneP1">
                                 <div id="currentScoreZoneP2 align-items-center justify-content-center">
                                     <span id="CurrentScorePlayer2"></span>
                                 </div>
@@ -133,12 +133,12 @@
   <div class="modal fade" id="winnerModal">
     <div class="modal-dialog">
       <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Winner</h1>
+        <div class="modal-header justify-content-center">
+          <h1 class="modal-title fs-2" id="exampleModalLabel">Grand gagnant!</h1>
           <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
         </div>
         <div class="modal-body">
-          <p>Congrats you' re a winner of this dice game</p>
+          <p>Félicitation vous êtes le grand gagnant de ce fantastique jeu de dés</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="quitGame">Quit game</button>
@@ -147,6 +147,7 @@
       </div>
     </div>
   </div> 
+  <!--rules modal-->
   
     <footer class="container-fluid">
         <div class="card mb-2">

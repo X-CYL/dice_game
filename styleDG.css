@@ -99,6 +99,13 @@ body .container-fluid .col .currentDiceValueZoneP1{
     width:80px;
     border-radius: 10px;
 }
+.modal-title{
+    color:red;
+}
+.modal-body p{
+    font-size: 2rem;
+    text-align: center;
+}
 @media screen and (max-width:1000px){
     .diceCol{
         height:190px;
