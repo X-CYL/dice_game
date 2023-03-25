@@ -102,10 +102,22 @@ body .container-fluid .col .currentDiceValueZoneP1{
 .modal-title{
     color:red;
 }
-.modal-body p{
-    font-size: 2rem;
-    text-align: center;
+.container{
+    height: 80px;
 }
+.card-body{
+    width: 500px;
+
+}
+.logoImg{
+    max-width: 100%;
+    max-height: 100%;
+}
+.textFooter{
+    margin-top: 15px;
+}
+
+
 @media screen and (max-width:1000px){
     .diceCol{
         height:190px;
@@ -138,8 +150,6 @@ body .container-fluid .col .currentDiceValueZoneP1{
 }
 .card{
     margin-top: 1%;
-    background-color: rgb(198, 198, 236);
-}
-.card-text{
-    font-size: 0.8rem;
+    background-color: rgb(134, 81, 8, 0.5);
+    color: white;
 }

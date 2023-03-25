@@ -134,11 +134,11 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header justify-content-center">
-          <h1 class="modal-title fs-2" id="exampleModalLabel">Grand gagnant!</h1>
+          <h1 class="modal-title fs-2" id="exampleModalLabel">Winner!</h1>
           <!--<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
         </div>
         <div class="modal-body">
-          <p>Félicitation vous êtes le grand gagnant de ce fantastique jeu de dés</p>
+          <p>Félicitation <span id="winnerName"></span> vous êtes le grand gagnant de ce fantastique jeu de dés</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" id="quitGame">Quit game</button>
@@ -148,20 +148,31 @@
     </div>
   </div> 
   <!--rules modal-->
-  
-    <footer class="container-fluid">
+  <footer>
+  <div class="container card-body">
+    <div class="row align-items-center justify-content-center">
+        <div class="col col-md-4 text-center">
+            <img class="logoImg" src ="/pictures/spyderred.png" alt="logo araignée sur le monde">
+        </div>
+        <div class="col col-md-4 text-start">
+            <p class="text-white textFooter">X-CYL web products</p>
+        </div>
+    </div>
+  </div>
+</footer>
+    <!--<footer class="container-fluid">
         <div class="card mb-2">
-            <div class="row g-0">
-            <div class="col-md-4">
-                <img src="./pictures/spyder1.png" class="img-fluid rounded-start" alt="photo">
+            <div class="row g-2 justify-content-center align-items-center text-center">
+            <div class="col-md-2">
+                <img src="./pictures/spyderred.png" class="img-fluid" alt="photo">
             </div>
-            <div class="col-md-8">
+            <div class="col-md-2">
                 <div class="card-body">
-                <p class="card-text fst-italic">X-CYL web product, developper.</p>
+                <p class="card-text fst-italic">X-CYL web product.</p>
                 </div>
             </div>
             </div>
         </div>
-    </footer>
+    </footer>-->
 </body>
 </html>

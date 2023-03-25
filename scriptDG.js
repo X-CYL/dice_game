@@ -21,6 +21,8 @@ let cszP1 = document.getElementById("pl1Player");
 let cszP2 = document.getElementById("pl2Player");
 let maxScore = 10;
 let lancerDe = document.getElementById("diceGameButton"); //stocke le bouton de lancé de dé
+let winnerDG =  document.getElementById("winnerName");
+
 
 let winModale = new bootstrap.Modal(document.getElementById("winnerModal"), {
   keyboard: true,
@@ -44,23 +46,24 @@ function departButton() {
     startButton.style.border = "2px solid #f44646";
     document.getElementById("resetGameButton").innerText = errorStartText;
     player1Name.focus();
+    lancerDe.disabled = true;
   } else {
     startButton.style.border = "2px solid #ffffff";
     document.getElementById("resetGameButton").innerText = "";
-    resetAll();
     lancerDe.addEventListener("click", rollDice);
+    savingScore.addEventListener("click", addscore);
+    resetAll();
   }
 }
-startButton.addEventListener("click", departButton);
+
+
 
 // reset all inputs and scores when init new game or start a new game
 function resetAll() {
   player1CurrentScore = 0;
-  document.getElementById("CurrentScorePlayer1").innerText =
-    player1CurrentScore;
+  document.getElementById("CurrentScorePlayer1").innerText = player1CurrentScore;
   player2CurrentScore = 0;
-  document.getElementById("CurrentScorePlayer2").innerText =
-    player2CurrentScore;
+  document.getElementById("CurrentScorePlayer2").innerText = player2CurrentScore;
   diceValuesPlayer1 = 0;
   document.getElementById("diceValuesPlayer1").innerHTML = diceValuesPlayer1;
   diceValuesPlayer2 = 0;
@@ -70,9 +73,8 @@ function resetAll() {
   cszP2.style.color = "black";
   player1Name.focus();
   player1Player = true;
-  document
-    .getElementById("diceImg")
-    .setAttribute("src", "./pictures/dice6.png");
+  document.getElementById("diceImg")
+  document.setAttribute("src", "./pictures/dice6.png");
 }
 
 // To rolling the dice when the game's playing
@@ -106,7 +108,6 @@ function rollDice() {
   }, 400);
 }
 
-lancerDe.addEventListener("click", rollDice);
 
 let isOne = 0;
 let temp = 0;
@@ -167,8 +168,6 @@ function addscore() {
   }
 }
 
-savingScore.addEventListener("click", addscore);
-
 function endGame() {
   winModale.show();
 }
@@ -176,16 +175,20 @@ function refreshPage() {
   window.location.reload();
 }
 
+startButton.addEventListener("click", departButton);
 resetButton.addEventListener("click", resetAll);
 quitButton.addEventListener("click", refreshPage);
+
 
 function ctrlMaxValue() {
   if (player1Player === true) {
     if (player1CurrentScore + valeurTemp >= maxScore) {
+        winnerDG.textContent = player1Name.value;
       endGame();
     }
   } else if (player2Player === true) {
     if (player2CurrentScore + valeurTemp >= maxScore) {
+        winnerDG.textContent = player2Name.value;
       endGame();
     }
   }
