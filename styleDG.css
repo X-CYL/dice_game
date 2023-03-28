@@ -20,7 +20,6 @@ body .container-fluid .playerCol{
     height: 690px;
     margin-top: 3%;
     border-radius: 30px;
-    box-shadow: 10px 10px 20px burlywood;
 }
 .diceCol{
     height:180px;
@@ -36,27 +35,6 @@ body .container-fluid .playerCol{
 }
 .bg-image2{
     background-image: url('./textures/silver1.jpg');
-}
-body .container-fluid .player1class .player1score{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    margin-right: 50%;
-    margin-top: 10%;
-}
-.currentScoreP1Row{
-    margin-top: 15%;
-    padding-right:15%;
-}
-.currentDiceValueRowP1{
-    margin-top: 75%;
-}
-.btnSaveP1Zone{
-    margin-top: 7%;
-    margin-left: 15%;
-}
-.btnSaveP1{
-    box-shadow: 5px 5px 5px rgb(204, 215, 2);
 }
 .btnSaveP3{
     border: solid 3px white;
@@ -107,7 +85,6 @@ body .container-fluid .col .currentDiceValueZoneP1{
 }
 .card-body{
     width: 500px;
-
 }
 .logoImg{
     max-width: 100%;
